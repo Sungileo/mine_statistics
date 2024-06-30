@@ -1,0 +1,27 @@
+project:
+  type: book
+
+book:
+  title: "나의 통계학" 
+  author: "박성일"
+  date: "2024. 6. 30."
+  chapters:
+    - index.qmd
+    - part: 01_descriptive_statistics.qmd
+      chapters:
+        - 01_descriptive_statistics/scale_of_data.qmd
+    
+    - part: 02_correlation.qmd
+      chapters:
+        - 02_correlation/pearson_correlation.qmd
+
+
+format:
+  html:
+    theme: cosmo
+    
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

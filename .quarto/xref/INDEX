@@ -1,0 +1,38 @@
+{
+  "index.qmd": {
+    "index.html": "560016af"
+  },
+  "intro.qmd": {
+    "intro.html": "130453c0"
+  },
+  "summary.qmd": {
+    "summary.html": "ef8364bf"
+  },
+  "references.qmd": {
+    "references.html": "1636d19b"
+  },
+  "descriptive_statistics.qmd": {
+    "descriptive_statistics.html": "2d8dc6e9"
+  },
+  "descriptive_statistics/summary.qmd": {
+    "summary.html": "3e58f49e"
+  },
+  "01_descriptive_statistics/summary.qmd": {
+    "summary.html": "92cf81c9"
+  },
+  "02_correlation/pearson_correlation.qmd": {
+    "pearson_correlation.html": "c7c7f5ef"
+  },
+  "correlation.qmd": {
+    "correlation.html": "1637f897"
+  },
+  "02_correlation.qmd": {
+    "02_correlation.html": "de082376"
+  },
+  "01_descriptive_statistics.qmd": {
+    "01_descriptive_statistics.html": "2e0c76b1"
+  },
+  "01_descriptive_statistics/scale_of_data.qmd": {
+    "scale_of_data.html": "eb63957a"
+  }
+}
