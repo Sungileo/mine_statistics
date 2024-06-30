@@ -3,7 +3,7 @@
     "path": "~/mine_statistics/01_descriptive_statistics/scale_of_data.qmd",
     "project_path": "01_descriptive_statistics/scale_of_data.qmd",
     "type": "quarto_markdown",
-    "hash": "2726323472",
+    "hash": "1862391082",
     "contents": "",
     "dirty": false,
     "created": 1719757947018.0,
@@ -16,16 +16,16 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "746:309",
+        "rmdVisualModeLocation": "2:0",
         "cursorPosition": "20,0",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1719758321,
+    "lastKnownWriteTime": 1719791248,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1719758321894,
+    "last_content_update": 1719791248807,
     "read_only": false,
     "read_only_alternatives": []
 }
