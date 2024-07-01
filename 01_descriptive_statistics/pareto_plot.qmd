@@ -1,0 +1,119 @@
+# 파레토 그림
+
+<b>상대도수</b>
+
+- 도수를 비율로 나타낸 값으로 $(도수)\ \div\ (총합)$으로 계산한 값이다.
+
+<b>누적상대도수</b>
+
+- 상대도수(relative frequency)를 표 위에서부터 더한 값
+
+<b>파레토 그림</b>
+
+- 항복을 도수의내림차순으로 정렬하고 히스토그램을 만든 다음, 그 위에 누적상대도수(cmmulative relative frequency)의 꺽은선 그래프를 겹친 그림
+
+
+
+```{r, include=FALSE}
+library(dplyr)
+library(knitr)
+library(ggplot2)
+```
+
+## 데이터
+
+```{r}
+data <- data.frame(이유 = c("색이 마음에 듬", "사용하기 쉬움", "향기가 좋음", "갖고 다니기 편함", "귀여움"),
+           사람_수 = c(10,50,15,5,20))
+
+data %>% kable()
+```
+
+## 상대도수, 누적상대도수
+
+- 내림차순 정렬 (도수 큰것 -> 작은것)
+
+- 상대도수 계산 (도수 /  도수 합계)
+
+- 누적상대도수 계산
+
+```{r}
+data <- data %>% arrange(-사람_수)
+
+data <- data %>% mutate(상대도수 = 사람_수/sum(사람_수),
+                누적상대도수 = cumsum(상대도수))
+
+data %>% kable()
+```
+
+## 파레토 그림
+
+```{r}
+p <- ggplot(data, aes(x = reorder(이유, -사람_수), y = 사람_수)) +
+  geom_bar(stat = "identity", fill = "royalblue", alpha = 0.7) +
+  geom_line(aes(y = 누적상대도수 * sum(사람_수)), group = 1, color = "orange") +
+  geom_point(aes(y = 누적상대도수 * sum(사람_수)), color = "orange") +
+  scale_y_continuous(sec.axis = sec_axis(~ . / sum(data$사람_수), name = "누적상대도수")) +
+  labs(x = "이유", y = "사람 수") +
+  theme_minimal()
+
+p
+```
+
+
+## 예시
+
+### 공장의 불량품 원인 분석
+
+품질 관리를 QC(quallity control)라 부르는데, 파레토 그림은 QC 7가지 도구(파레토 그림, 특성요인도, 체크시트, 히스토그램, 산점도, 그래프, 관리도)중 하나이다.
+
+QC의 파레토 그림에서 `기타`는 상대도수가 크더라도 그래프 맨 오른쪽에 표기한다.
+
+```{r}
+data <- data.frame(원인 = c('흠집', '휘어짐', '탈색', '누락', '강도_부족', '기타'),
+                   불량품_수 = c(100, 75, 50, 40, 25,40))
+data$원인 <- factor(data$원인, levels = data$원인)
+
+data <- data %>% mutate(상대도수 = 불량품_수/sum(불량품_수),
+                누적상대도수 = cumsum(상대도수))
+
+data %>% ggplot(aes(x=원인, y=불량품_수))+
+  geom_bar(stat = "identity", fill = "royalblue", alpha =0.7)+
+  geom_line(aes(y = 누적상대도수*sum(불량품_수)), group = 1, color = "orange")+
+  geom_point(aes(y = 누적상대도수*sum(불량품_수)), color = "orange")+
+  scale_y_continuous(sec.axis = sec_axis(~ . / sum(data$불량품_수), name = "누적상대도수")) +
+  labs(x = "원인", y = "불량품 수") +
+  theme_minimal()
+
+```
+
+### ABC 분석
+
+ABC 분석(상품 매출 구성 분석)에도 파레토 그림을 이용한다. 
+
+```{r}
+data <- data.frame(음료 = c('생수', '콜라', '녹차', '오렌지주스', '기타'),
+                   판매량 = c(80, 60, 30, 20, 10))
+data <- data %>% arrange(-판매량)
+data <- data %>% mutate(상대도수 = 판매량/sum(판매량),
+                누적상대도수 = cumsum(상대도수))
+
+data %>% ggplot(aes(x=reorder(음료,-판매량), y=판매량))+
+  geom_bar(stat = "identity", fill = "royalblue", alpha =0.7)+
+  geom_line(aes(y = 누적상대도수*sum(판매량)), group = 1, color = "orange")+
+  geom_point(aes(y = 누적상대도수*sum(판매량)), color = "orange")+
+  scale_y_continuous(sec.axis = sec_axis(~ . / sum(data$판매량), name = "누적상대도수")) +
+  labs(x = "음료", y = "판매량") +
+  theme_minimal()
+
+```
+
+
+
+
+
+
+
+
+
+

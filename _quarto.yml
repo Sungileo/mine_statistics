@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: docs
 
 book:
   title: "나의 통계학" 
@@ -10,6 +11,10 @@ book:
     - part: 01_descriptive_statistics.qmd
       chapters:
         - 01_descriptive_statistics/scale_of_data.qmd
+        - 01_descriptive_statistics/freq_table.qmd
+        - 01_descriptive_statistics/pareto_plot.qmd
+        - 01_descriptive_statistics/sigma.qmd
+        - 01_descriptive_statistics/mean.qmd
     
     - part: 02_correlation.qmd
       chapters:
@@ -19,6 +24,9 @@ book:
 format:
   html:
     theme: cosmo
+    code-fold: true
+    code-summary: "코드 보기"
+
     
   pdf:
     documentclass: scrreprt

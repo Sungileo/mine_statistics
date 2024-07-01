@@ -34,5 +34,17 @@
   },
   "01_descriptive_statistics/scale_of_data.qmd": {
     "scale_of_data.html": "eb63957a"
+  },
+  "01_descriptive_statistics/freq_table.qmd": {
+    "freq_table.html": "ce6e30fa"
+  },
+  "01_descriptive_statistics/pareto_plot.qmd": {
+    "pareto_plot.html": "99332c9c"
+  },
+  "01_descriptive_statistics/sigma.qmd": {
+    "sigma.html": "66225f72"
+  },
+  "01_descriptive_statistics/mean.qmd": {
+    "mean.html": "d6c5695c"
   }
 }
