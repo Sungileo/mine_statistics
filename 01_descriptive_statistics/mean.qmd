@@ -1,10 +1,14 @@
 # 평균, 분산, 표준편차
 
-
 ## 평균
+
+$\frac{1}{n}\sum\limits _{k=1} ^{n} a_k \ =\ \frac{a_1+a_1+a_2...+a_n}{n}$
 
 ## 분산
 
+${\displaystyle \operatorname {Var} (X)=\operatorname {E} \left[(X-\mu )^{2}\right]}$
+
 ## 표준편차
+
 
 
