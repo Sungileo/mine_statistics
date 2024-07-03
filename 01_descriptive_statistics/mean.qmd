@@ -8,42 +8,37 @@ $\frac{1}{n}\sum\limits _{k=1} ^{n} a_k \ =\ \frac{a_1+a_1+a_2...+a_n}{n}$
 
 ## 분산
 
-각 값과 평균과의 차이를 편차(deviation), 편차 제곱의 평균을 `분산`(variance) 이라고 한다. 
+각 값과 평균과의 차이를 편차(deviation), 편차 제곱의 평균을 `분산`(variance) 이라고 한다.
 
 ${\displaystyle \operatorname {Var} (X)=\operatorname {E} \left[(X-\mu )^{2}\right]}$
 
 분산의 차이는 데이터의 흩어짐 정도를 나타낸다.
 
 ```{r}
-set.seed(122)
-data1 <- rnorm(100, mean = 0, sd = 5) 
-data2 <- rnorm(100, mean = 0, sd = 25)
+set.seed(99)
+data1 <- rnorm(10000, mean = 0, sd = 5)
+data2 <- rnorm(10000, mean = 0, sd = 10)
 
-# 그래프 창을 1행 2열로 분할
-par(mfrow=c(1,2))
+par(mfrow = c(1, 2))
+plot(density(data1), main = "분산 25", xlab = "", ylab = "", col = "blue", lwd = 2, xlim=c(-40,40), ylim = c(0,0.1))
+plot(density(data2), main = "분산 100", xlab = "", ylab = "", col = "green", lwd = 2, xlim=c(-40,40), ylim = c(0,0.1))
 
-# 첫 번째 히스토그램
-hist(data1, main="Histogram of Data1", xlab="Value", ylab="Frequency", col="blue", border="black")
-title(sub = paste("Variance:", round(var(data1), 2)))
-
-# 두 번째 히스토그램
-hist(data2, main="Histogram of Data2", xlab="Value", ylab="Frequency", col="red", border="black")
-title(sub = paste("Variance:", round(var(data2), 2)))
 ```
+
 
 
 ## 표준편차
 
 분산의 제곱근을 `표준편차`(standard deviation)라고 한다
 
+## 변동계수
 
-
-
-
+<b>표준편차</b> $\ s_x$를 <b>평균</b>$\ \overline{x}$로 나눈 $\frac{s_x}{\overline{x}}$을 `변동계수`(coefficient of variation)라고 한다.<br>이는 평균이 다른 두 집단 데이터의 흩어짐 정도를 비교할때 도움이 된다.<br> 예) A사 주식과 B사 주식의 변동성 비교
 
 ## 예시
 
 ### 데이터
+
 ```{r}
 data = c(2,4,5,8, 11)
 data
@@ -56,7 +51,6 @@ $\frac{2+4+5+8+11}{5}\ =\ 6$
 ```{r}
 mean(data)
 ```
-
 
 ### 분산
 
@@ -74,22 +68,3 @@ $\sqrt{10}\ =\ 3.162$
 ```{r}
 sqrt(var_data)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

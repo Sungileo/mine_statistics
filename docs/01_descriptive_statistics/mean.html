@@ -246,12 +246,13 @@ window.Quarto = {
   <li><a href="#평균" id="toc-평균" class="nav-link active" data-scroll-target="#평균"><span class="header-section-number">5.1</span> 평균</a></li>
   <li><a href="#분산" id="toc-분산" class="nav-link" data-scroll-target="#분산"><span class="header-section-number">5.2</span> 분산</a></li>
   <li><a href="#표준편차" id="toc-표준편차" class="nav-link" data-scroll-target="#표준편차"><span class="header-section-number">5.3</span> 표준편차</a></li>
-  <li><a href="#예시" id="toc-예시" class="nav-link" data-scroll-target="#예시"><span class="header-section-number">5.4</span> 예시</a>
+  <li><a href="#변동계수" id="toc-변동계수" class="nav-link" data-scroll-target="#변동계수"><span class="header-section-number">5.4</span> 변동계수</a></li>
+  <li><a href="#예시" id="toc-예시" class="nav-link" data-scroll-target="#예시"><span class="header-section-number">5.5</span> 예시</a>
   <ul class="collapse">
-  <li><a href="#데이터" id="toc-데이터" class="nav-link" data-scroll-target="#데이터"><span class="header-section-number">5.4.1</span> 데이터</a></li>
-  <li><a href="#평균-1" id="toc-평균-1" class="nav-link" data-scroll-target="#평균-1"><span class="header-section-number">5.4.2</span> 평균</a></li>
-  <li><a href="#분산-1" id="toc-분산-1" class="nav-link" data-scroll-target="#분산-1"><span class="header-section-number">5.4.3</span> 분산</a></li>
-  <li><a href="#표준편차-1" id="toc-표준편차-1" class="nav-link" data-scroll-target="#표준편차-1"><span class="header-section-number">5.4.4</span> 표준편차</a></li>
+  <li><a href="#데이터" id="toc-데이터" class="nav-link" data-scroll-target="#데이터"><span class="header-section-number">5.5.1</span> 데이터</a></li>
+  <li><a href="#평균-1" id="toc-평균-1" class="nav-link" data-scroll-target="#평균-1"><span class="header-section-number">5.5.2</span> 평균</a></li>
+  <li><a href="#분산-1" id="toc-분산-1" class="nav-link" data-scroll-target="#분산-1"><span class="header-section-number">5.5.3</span> 분산</a></li>
+  <li><a href="#표준편차-1" id="toc-표준편차-1" class="nav-link" data-scroll-target="#표준편차-1"><span class="header-section-number">5.5.4</span> 표준편차</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -291,20 +292,13 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>코드 보기</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">122</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">5</span>) </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">25</span>)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">99</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 그래프 창을 1행 2열로 분할</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 첫 번째 히스토그램</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data1, <span class="at">main=</span><span class="st">"Histogram of Data1"</span>, <span class="at">xlab=</span><span class="st">"Value"</span>, <span class="at">ylab=</span><span class="st">"Frequency"</span>, <span class="at">col=</span><span class="st">"blue"</span>, <span class="at">border=</span><span class="st">"black"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">sub =</span> <span class="fu">paste</span>(<span class="st">"Variance:"</span>, <span class="fu">round</span>(<span class="fu">var</span>(data1), <span class="dv">2</span>)))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 번째 히스토그램</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data2, <span class="at">main=</span><span class="st">"Histogram of Data2"</span>, <span class="at">xlab=</span><span class="st">"Value"</span>, <span class="at">ylab=</span><span class="st">"Frequency"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">border=</span><span class="st">"black"</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">sub =</span> <span class="fu">paste</span>(<span class="st">"Variance:"</span>, <span class="fu">round</span>(<span class="fu">var</span>(data2), <span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(data1), <span class="at">main =</span> <span class="st">"분산 25"</span>, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">""</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">40</span>,<span class="dv">40</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(data2), <span class="at">main =</span> <span class="st">"분산 100"</span>, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">""</span>, <span class="at">col =</span> <span class="st">"green"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">40</span>,<span class="dv">40</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -319,10 +313,14 @@ window.Quarto = {
 <h2 data-number="5.3" class="anchored" data-anchor-id="표준편차"><span class="header-section-number">5.3</span> 표준편차</h2>
 <p>분산의 제곱근을 <code>표준편차</code>(standard deviation)라고 한다</p>
 </section>
-<section id="예시" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="예시"><span class="header-section-number">5.4</span> 예시</h2>
-<section id="데이터" class="level3" data-number="5.4.1">
-<h3 data-number="5.4.1" class="anchored" data-anchor-id="데이터"><span class="header-section-number">5.4.1</span> 데이터</h3>
+<section id="변동계수" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="변동계수"><span class="header-section-number">5.4</span> 변동계수</h2>
+<p><b>표준편차</b> <span class="math inline">\(\ s_x\)</span>를 <b>평균</b><span class="math inline">\(\ \overline{x}\)</span>로 나눈 <span class="math inline">\(\frac{s_x}{\overline{x}}\)</span>을 <code>변동계수</code>(coefficient of variation)라고 한다.<br>이는 평균이 다른 두 집단 데이터의 흩어짐 정도를 비교할때 도움이 된다.<br> 예) A사 주식과 B사 주식의 변동성 비교</p>
+</section>
+<section id="예시" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="예시"><span class="header-section-number">5.5</span> 예시</h2>
+<section id="데이터" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="데이터"><span class="header-section-number">5.5.1</span> 데이터</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>코드 보기</summary>
@@ -334,8 +332,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="평균-1" class="level3" data-number="5.4.2">
-<h3 data-number="5.4.2" class="anchored" data-anchor-id="평균-1"><span class="header-section-number">5.4.2</span> 평균</h3>
+<section id="평균-1" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="평균-1"><span class="header-section-number">5.5.2</span> 평균</h3>
 <p><span class="math inline">\(\frac{2+4+5+8+11}{5}\ =\ 6\)</span></p>
 <div class="cell">
 <details class="code-fold">
@@ -347,8 +345,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="분산-1" class="level3" data-number="5.4.3">
-<h3 data-number="5.4.3" class="anchored" data-anchor-id="분산-1"><span class="header-section-number">5.4.3</span> 분산</h3>
+<section id="분산-1" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="분산-1"><span class="header-section-number">5.5.3</span> 분산</h3>
 <p><span class="math inline">\(\frac{(2-6)^2+(4-6)^2+(5-6)^2+(8-6)^2+(11-6)^2}{5}\ =\ 10\)</span></p>
 <div class="cell">
 <details class="code-fold">
@@ -361,8 +359,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="표준편차-1" class="level3" data-number="5.4.4">
-<h3 data-number="5.4.4" class="anchored" data-anchor-id="표준편차-1"><span class="header-section-number">5.4.4</span> 표준편차</h3>
+<section id="표준편차-1" class="level3" data-number="5.5.4">
+<h3 data-number="5.5.4" class="anchored" data-anchor-id="표준편차-1"><span class="header-section-number">5.5.4</span> 표준편차</h3>
 <p><span class="math inline">\(\sqrt{10}\ =\ 3.162\)</span></p>
 <div class="cell">
 <details class="code-fold">
