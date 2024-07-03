@@ -2,13 +2,94 @@
 
 ## 평균
 
+데이터의 합계를 크기로 나눈 것을 `평균`(mean)이라고 한다.
+
 $\frac{1}{n}\sum\limits _{k=1} ^{n} a_k \ =\ \frac{a_1+a_1+a_2...+a_n}{n}$
 
 ## 분산
 
+각 값과 평균과의 차이를 편차(deviation), 편차 제곱의 평균을 `분산`(variance) 이라고 한다. 
+
 ${\displaystyle \operatorname {Var} (X)=\operatorname {E} \left[(X-\mu )^{2}\right]}$
 
+분산의 차이는 데이터의 흩어짐 정도를 나타낸다.
+
+```{r}
+set.seed(122)
+data1 <- rnorm(100, mean = 0, sd = 5) 
+data2 <- rnorm(100, mean = 0, sd = 25)
+
+# 그래프 창을 1행 2열로 분할
+par(mfrow=c(1,2))
+
+# 첫 번째 히스토그램
+hist(data1, main="Histogram of Data1", xlab="Value", ylab="Frequency", col="blue", border="black")
+title(sub = paste("Variance:", round(var(data1), 2)))
+
+# 두 번째 히스토그램
+hist(data2, main="Histogram of Data2", xlab="Value", ylab="Frequency", col="red", border="black")
+title(sub = paste("Variance:", round(var(data2), 2)))
+```
+
+
 ## 표준편차
+
+분산의 제곱근을 `표준편차`(standard deviation)라고 한다
+
+
+
+
+
+
+## 예시
+
+### 데이터
+```{r}
+data = c(2,4,5,8, 11)
+data
+```
+
+### 평균
+
+$\frac{2+4+5+8+11}{5}\ =\ 6$
+
+```{r}
+mean(data)
+```
+
+
+### 분산
+
+$\frac{(2-6)^2+(4-6)^2+(5-6)^2+(8-6)^2+(11-6)^2}{5}\ =\ 10$
+
+```{r}
+var_data = sum((data-6)**2)/5
+var_data
+```
+
+### 표준편차
+
+$\sqrt{10}\ =\ 3.162$
+
+```{r}
+sqrt(var_data)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
