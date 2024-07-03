@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>나의 통계학 - 1&nbsp; 데이터의 척도</title>
+<title>나의 통계학 - 6&nbsp; 도수분포표와 평균·분산</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../01_descriptive_statistics/freq_table.html" rel="next">
-<link href="../01_descriptive_statistics.html" rel="prev">
+<link href="../02_correlation.html" rel="next">
+<link href="../01_descriptive_statistics/mean.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,6 +96,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -75,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_descriptive_statistics.html">기술 통계</a></li><li class="breadcrumb-item"><a href="../01_descriptive_statistics/scale_of_data.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터의 척도</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_descriptive_statistics.html">기술 통계</a></li><li class="breadcrumb-item"><a href="../01_descriptive_statistics/mean_freq_table.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">도수분포표와 평균·분산</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -117,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_descriptive_statistics/scale_of_data.html" class="sidebar-item-text sidebar-link active">
+  <a href="../01_descriptive_statistics/scale_of_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터의 척도</span></span></a>
   </div>
 </li>
@@ -147,7 +183,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_descriptive_statistics/mean_freq_table.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_descriptive_statistics/mean_freq_table.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">도수분포표와 평균·분산</span></span></a>
   </div>
 </li>
@@ -180,10 +216,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#비율척도---비율-데이터" id="toc-비율척도---비율-데이터" class="nav-link active" data-scroll-target="#비율척도---비율-데이터"><span class="header-section-number">1.1</span> 비율척도 - 비율 데이터</a></li>
-  <li><a href="#등간척도---간격-데이터" id="toc-등간척도---간격-데이터" class="nav-link" data-scroll-target="#등간척도---간격-데이터"><span class="header-section-number">1.2</span> 등간척도 - 간격 데이터</a></li>
-  <li><a href="#서열척도---순위-데이터" id="toc-서열척도---순위-데이터" class="nav-link" data-scroll-target="#서열척도---순위-데이터"><span class="header-section-number">1.3</span> 서열척도 - 순위 데이터</a></li>
-  <li><a href="#명목척도---범주-데이터" id="toc-명목척도---범주-데이터" class="nav-link" data-scroll-target="#명목척도---범주-데이터"><span class="header-section-number">1.4</span> 명목척도 - 범주 데이터</a></li>
+  <li><a href="#계급값으로-평균분산-구하기" id="toc-계급값으로-평균분산-구하기" class="nav-link active" data-scroll-target="#계급값으로-평균분산-구하기"><span class="header-section-number">6.1</span> 계급값으로 평균·분산 구하기</a></li>
+  <li><a href="#상대도수로-평균분산-구하기" id="toc-상대도수로-평균분산-구하기" class="nav-link" data-scroll-target="#상대도수로-평균분산-구하기"><span class="header-section-number">6.2</span> 상대도수로 평균·분산 구하기</a></li>
+  <li><a href="#실제-값과-도수분포표로-구한-값-사이에는-오차가-있음" id="toc-실제-값과-도수분포표로-구한-값-사이에는-오차가-있음" class="nav-link" data-scroll-target="#실제-값과-도수분포표로-구한-값-사이에는-오차가-있음"><span class="header-section-number">6.3</span> 실제 값과 도수분포표로 구한 값 사이에는 오차가 있음</a></li>
   </ul>
 </nav>
     </div>
@@ -192,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터의 척도</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">도수분포표와 평균·분산</span></h1>
 </div>
 
 
@@ -207,59 +242,95 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>측정 수준에는 비율척도, 둥간척도, 서열척도, 명목척도의 네 가지가 있다</p>
-<p>특정 항목에 관한 숫자를 모은 것을 <code>데이터(data)</code>라고 한다.</p>
-<p>처음에 데이터의 분류를 소개하는 이유는 데이터 유형에 따라 사용할 수 있는 분석 방법이 다르기 때문이다.</p>
-<section id="비율척도---비율-데이터" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="비율척도---비율-데이터"><span class="header-section-number">1.1</span> 비율척도 - 비율 데이터</h2>
-<p>비율 데이터는 길이, 질량, 시간, 절대온도 등의 물리량이나, 돈의 많고 적음을 숫자로 나타내는 데이터이다. 비율 데이터를 측정하는것이 <code>비율척도</code>이다. 비율 데이터는 사칙연산을 할 수 있습니다.</p>
+<section id="계급값으로-평균분산-구하기" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="계급값으로-평균분산-구하기"><span class="header-section-number">6.1</span> 계급값으로 평균·분산 구하기</h2>
+<p>도수분포표에서는 실제 데이터값은 사라지고 데이터가 어느 계급에 속하는지의 정보만 남는다. 그러나 <strong>계급값을 이용</strong>하여 데이터의 대략적인 평균 분산값을 계산할 수는 있다.</p>
+<p>데이터는 <a href="https://sungileo.github.io/mine_statistics/01_descriptive_statistics/freq_table.html" title="2장 도수분포표">2장 도수분포표</a>에서 살펴본 데이터와 같다.</p>
+<p>예를 들어, 계급 <code>20이상 30 미만</code> 구간의 도수는 1이므로, 데이터가 25인 사람이 1명이라고 계산하는 것이다.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 생성</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># 랜덤 시드 고정</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>) <span class="co"># 평균 50, 표준편차 10인 정규 분포를 따르는 데이터 100개 생성</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">10</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>freq_table <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="fu">cut</span>(data, <span class="at">breaks =</span> breaks, <span class="at">right =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(freq_table)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Rf <span class="ot">&lt;-</span> df<span class="sc">$</span>Freq<span class="sc">/</span><span class="dv">100</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Var1 Freq   Rf
+1 [20,30)    1 0.01
+2 [30,40)   13 0.13
+3 [40,50)   34 0.34
+4 [50,60)   35 0.35
+5 [60,70)   14 0.14
+6 [70,80)    3 0.03</code></pre>
+</div>
+</div>
+<p>그러면 평균은 다음과 같이 계산할 수 있다.</p>
+<p><span class="math inline">\(\frac{25\times1+35\times13+45\times34+55\times35+65\times14+75\times3}{100}\)</span></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>Freq<span class="sc">*</span><span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">35</span>,<span class="dv">45</span>,<span class="dv">55</span>,<span class="dv">65</span>,<span class="dv">75</span>))<span class="sc">/</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 50.7</code></pre>
+</div>
+</div>
+<p>분산은 편차 제곱의 평균이므로 다음과 같이 계산할 수 있다</p>
+<p><span class="math inline">\(\frac{(25-50.7)^2\times1+(35-50.7)^2\times13+(45-50.7)^2\times34+(55-50.7)^2\times35+(65-50.7)^2\times14+(75-50.7)^2\times3}{100}\)</span></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>Freq<span class="sc">*</span>(<span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">35</span>,<span class="dv">45</span>,<span class="dv">55</span>,<span class="dv">65</span>,<span class="dv">75</span>)<span class="sc">-</span><span class="fl">50.7</span>)<span class="sc">**</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 102.51</code></pre>
+</div>
+</div>
 </section>
-<section id="등간척도---간격-데이터" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="등간척도---간격-데이터"><span class="header-section-number">1.2</span> 등간척도 - 간격 데이터</h2>
-<p>간격 데이터는 비율 데이터처럼 숫자로 표현하는 데이터이지만, 숫자의 차이에 의미가 있는 데이터이다. 온도나, 시간과 같은 물리량, 나이, 지능지수가 <code>등간척도</code>에 해당한다.</p>
+<section id="상대도수로-평균분산-구하기" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="상대도수로-평균분산-구하기"><span class="header-section-number">6.2</span> 상대도수로 평균·분산 구하기</h2>
+<p>상대도수를 이용하여 평균과 분산을 계산하면 다음과 같으며, 도수를 이용해 계산한 값과 같다는 것을 알 수 있다.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mean : "</span>,<span class="fu">sum</span>(df<span class="sc">$</span>Rf<span class="sc">*</span><span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">35</span>,<span class="dv">45</span>,<span class="dv">55</span>,<span class="dv">65</span>,<span class="dv">75</span>)),<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,<span class="st">"Variance : "</span>,<span class="fu">sum</span>((df<span class="sc">$</span>Rf<span class="sc">*</span>(<span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">35</span>,<span class="dv">45</span>,<span class="dv">55</span>,<span class="dv">65</span>,<span class="dv">75</span>)<span class="sc">-</span><span class="fl">50.7</span>)<span class="sc">**</span><span class="dv">2</span>)), <span class="at">sep =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean : 50.7
+Variance : 102.51</code></pre>
+</div>
+</div>
 </section>
-<section id="서열척도---순위-데이터" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="서열척도---순위-데이터"><span class="header-section-number">1.3</span> 서열척도 - 순위 데이터</h2>
-<p>순위 데이터의 예로는 상품의 만족도를 5단계로 답하는 설문조사의 결과 등을 들 수 있다. 숫자는 대소관계에만 의미가 있다. 순위 데이터의 측정 수준이 <code>서열척도</code>이다. 등간척도와 유사하지만, 서열척도는 등간척도만큼 객관성이 없다. <br>ex) 등간척도 - 10°C, 20°C <br>ex) 서열척도 - 만족, 매우 만족</p>
-</section>
-<section id="명목척도---범주-데이터" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="명목척도---범주-데이터"><span class="header-section-number">1.4</span> 명목척도 - 범주 데이터</h2>
-<p>범주 데이터는 숫자로 나타내지 않아도 된다. 범주 데이터를 표현하는데 필요한 분류 기준이 <code>명목척도</code>이다. <br>ex) 성별, 혈액형, 이름, 주소</p>
-<hr>
-<table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 34%">
-<col style="width: 32%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>양적 데이터</td>
-<td>비율 데이터</td>
-<td>비율척도 (ratio scale)</td>
-<td>길이, 시간, 질량</td>
-</tr>
-<tr class="even">
-<td>양적 데이터</td>
-<td>간격 데이터</td>
-<td>등간척도 (interval scale)</td>
-<td>온도, 나이, 지능지수</td>
-</tr>
-<tr class="odd">
-<td>질적 데이터</td>
-<td>순위 데이터</td>
-<td>서열척도 (ordinal scale)</td>
-<td>만족도, 설문결과</td>
-</tr>
-<tr class="even">
-<td>질적 데이터</td>
-<td>범주 데이터</td>
-<td>명목척도 (nominal scale)</td>
-<td>성별, 혈액형, 이름, 주소</td>
-</tr>
-</tbody>
-</table>
+<section id="실제-값과-도수분포표로-구한-값-사이에는-오차가-있음" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="실제-값과-도수분포표로-구한-값-사이에는-오차가-있음"><span class="header-section-number">6.3</span> 실제 값과 도수분포표로 구한 값 사이에는 오차가 있음</h2>
+<p>실제 데이터로 계산한 평균과 표준편차를 각각 <span class="math inline">\(\overline{x},\ s_x\)</span>, 도수분포표로 계산한 평균과 표준편차를 각각 <span class="math inline">\(\hat{x},\ \hat{s}_x\)</span>, 계급폭을 <span class="math inline">\(d\)</span> 라 하면 다음 식이 성립한다.</p>
+<p><span class="math display">\[\lvert\overline{x}-\hat{x}\rvert \leq \frac{d}{2}\ \ \ \ \ \ \ \ \ \ \ \lvert s_x-\hat{s}_x\rvert \leq \frac{d}{2}\]</span></p>
+<p>앞 식에서 계급폭이 작을수록 도수분포표로 계산한 평균과 분산이 실제 데이터의 평균과 분산에 가까워진다는 것을 알 수 있다.</p>
+<p>데이터에 이상치가 있고, 끝 계급(–이상, –이하의 계급)의 도수가 작을 때는, 개별 값으로 계산한 평균과 분산보다 <strong>계급값(도수분포표)으로 게산한 평균과 분산이 오히려 데이터를 정확하게 설명하는 상황도 있다</strong>.<br>ex)소득분포 (<code>1000이상</code>이 이상치인 경우)</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">c</span>(<span class="st">"0-99"</span>, <span class="st">"100-199"</span>, <span class="st">"200-299"</span>,<span class="st">"300-399"</span>,<span class="st">"400-499"</span>,<span class="st">"500-599"</span>,<span class="st">"1000이상"</span>),</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">1</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"소득"</span>,<span class="st">"도수"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      소득 도수
+1     0-99    1
+2  100-199    2
+3  200-299    6
+4  300-399   10
+5  400-499    8
+6  500-599    5
+7 1000이상    1</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -498,16 +569,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_descriptive_statistics.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">기술 통계</span>
+      <a href="../01_descriptive_statistics/mean.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">평균, 분산, 표준편차</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_descriptive_statistics/freq_table.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">도수분포표와 히스토그램</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../02_correlation.html" class="pagination-link">
+        <span class="nav-page-text">상관 관계</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
