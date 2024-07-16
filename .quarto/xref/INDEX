@@ -49,5 +49,8 @@
   },
   "01_descriptive_statistics/mean_freq_table.qmd": {
     "mean_freq_table.html": "54a92dfa"
+  },
+  "01_descriptive_statistics/representative_value.qmd": {
+    "representative_value.html": "97df1eac"
   }
 }
