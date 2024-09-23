@@ -228,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#표쥰화한-변량-만들기" id="toc-표쥰화한-변량-만들기" class="nav-link active" data-scroll-target="#표쥰화한-변량-만들기"><span class="header-section-number">8.1</span> 표쥰화한 변량 만들기</a></li>
+  <li><a href="#표준화한-변량-만들기" id="toc-표준화한-변량-만들기" class="nav-link active" data-scroll-target="#표준화한-변량-만들기"><span class="header-section-number">8.1</span> 표준화한 변량 만들기</a></li>
   </ul>
 </nav>
     </div>
@@ -258,19 +258,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>표준화한 변량 y: 평균은 0, 분산은 1이 됨</li>
 <li>중심화한 변량 z: 평균은 0이 됨</li>
 </ul>
-<section id="표쥰화한-변량-만들기" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="표쥰화한-변량-만들기"><span class="header-section-number">8.1</span> 표쥰화한 변량 만들기</h2>
-<p><a href="https://sungileo.github.io/mine_statistics/01_descriptive_statistics/freq_table.html" title="2장 도수분포표">5장 도수분포표</a></p>
+<section id="표준화한-변량-만들기" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="표준화한-변량-만들기"><span class="header-section-number">8.1</span> 표준화한 변량 만들기</h2>
+<p><a href="https://sungileo.github.io/mine_statistics/01_descriptive_statistics/mean.html" title="5장 평균, 분산, 표준편차">5장 평균, 분산, 표준편차</a>에서 살펴본 다음 데이터의 평균은 6, 표준편차는 10 이었습니다.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">11</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(data, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"평균 : "</span>, <span class="fu">mean</span>(data), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"분산 : "</span>, <span class="fu">mean</span>((data<span class="sc">-</span><span class="fu">mean</span>(data))<span class="sc">**</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  2  4  5  8 11</code></pre>
+<pre><code>2 4 5 8 11 
+ 평균 :  6 
+ 분산 :  10</code></pre>
 </div>
 </div>
+<p>데이터를 표준화하려면 편차를 표준편차로 나눈다. 다음과 같다.</p>
+<p><span class="math display">\[-\frac{4}{\sqrt{10}}, -\frac{2}{\sqrt{10}}, -\frac{1}{\sqrt{10}},\frac{2}{\sqrt{10}}, \frac{5}{\sqrt{10}}  \]</span></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_std <span class="ot">&lt;-</span> (data <span class="sc">-</span> <span class="fu">mean</span>(data))<span class="sc">/</span><span class="fu">sd</span>(data)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(data_std, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"표준화된 데이터의 평균 : "</span>, <span class="fu">mean</span>(data_std), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"표준화된 데이터의 분산 : "</span>, <span class="fu">sd</span>(data_std))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>-1.131371 -0.5656854 -0.2828427 0.5656854 1.414214 
+ 표준화된 데이터의 평균 :  -2.218278e-17 
+ 표준화된 데이터의 분산 :  1</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">scale</span>(data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.218278e-17</code></pre>
+</div>
+</div>
+<p>평균이 0, 분산이 1이라는 것을 확인할 수 있다.</p>
+<ul>
+<li>평균이 정확히 0이 아닌 이유
+<ol type="1">
+<li>컴퓨터의 부동소수점 연산으로 인한 작은 오차</li>
+<li>과학적 표기법으로 표현된 매우 작은 수</li>
+<li>이 값은 실질적으로 0으로 간주할 수 있음</li>
+</ol></li>
+</ul>
+<p>또한 변량을 1차식으로 변환해도 표준화한 값은 변하지 않는다.<br> 변량 <span class="math inline">\(x\)</span>에 대해 새로운 변량 <span class="math inline">\(w\)</span>를 1차식 <span class="math inline">\(w = ax+b\)</span>로 정의한다.<br> 그리고 <span class="math inline">\(x\)</span>의 평균을 <span class="math inline">\(\overline{x}\)</span>, 분산을 <span class="math inline">\({s_x }^2\)</span>, <span class="math inline">\(w\)</span>의 평균을 <span class="math inline">\(\overline{w}\)</span>, 분산을 <span class="math inline">\({s_w }^2\)</span>이라고 하면 다음과 같은 관계가 있다.</p>
+<p><span class="math display">\[\overline{w} = a \overline{x} + b \hspace{120px}  {s_w }^2 = a^2{s_x }^2\]</span></p>
+<p>평균은 같은 식, 분산은 a^2배가 된다.</p>
 
 
 </section>
