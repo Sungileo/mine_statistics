@@ -52,5 +52,29 @@
   },
   "01_descriptive_statistics/representative_value.qmd": {
     "representative_value.html": "97df1eac"
+  },
+  "01_descriptive_statistics/07_representative_value.qmd": {
+    "07_representative_value.html": "ef9dd132"
+  },
+  "01_descriptive_statistics/01_scale_of_data.qmd": {
+    "01_scale_of_data.html": "c4d46cf0"
+  },
+  "01_descriptive_statistics/02_freq_table.qmd": {
+    "02_freq_table.html": "31aa9285"
+  },
+  "01_descriptive_statistics/03_pareto_plot.qmd": {
+    "03_pareto_plot.html": "c157bfe6"
+  },
+  "01_descriptive_statistics/04_sigma.qmd": {
+    "04_sigma.html": "f9b3e71e"
+  },
+  "01_descriptive_statistics/05_mean.qmd": {
+    "05_mean.html": "07018959"
+  },
+  "01_descriptive_statistics/06_mean_freq_table.qmd": {
+    "06_mean_freq_table.html": "80431c3f"
+  },
+  "01_descriptive_statistics/08_standarize.qmd": {
+    "08_standarize.html": "f538a38b"
   }
 }

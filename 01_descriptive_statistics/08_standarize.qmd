@@ -1,0 +1,19 @@
+# 변량의 표준화
+
+변량 $x$의 평균을 $\overline{x}$, 분산을 ${s_x }^2$이라 할때 변량 y,z를 다음과 같이 정의
+
+$$y = \frac{x - \overline{x}}{s_x}$$ $$z = x - \overline{x}$$ y를 '**x를 표준화한 변량**', z를 '**x를 중심화한 변량**' 이라고 함.
+
+-   표준화한 변량 y: 평균은 0, 분산은 1이 됨
+-   중심화한 변량 z: 평균은 0이 됨
+
+## 표쥰화한 변량 만들기
+
+[5장 도수분포표](https://sungileo.github.io/mine_statistics/01_descriptive_statistics/freq_table.html "2장 도수분포표")
+
+
+```{r}
+data <- c(2,4,5,8,11)
+print(data)
+```
+
